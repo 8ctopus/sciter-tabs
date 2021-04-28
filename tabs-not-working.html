@@ -1,0 +1,143 @@
+<style>
+
+.tabs {
+    font: system;
+    behavior: tabs;
+    height: *;
+    width: *;
+    overflow: hidden;
+}
+
+/* tab strip */
+.tabs > .strip {
+    flow: horizontal;
+    margin-bottom: -1px;
+    padding: 2px 2px 0 2px;
+}
+
+/* all tabs, passive by default */
+.tabs > .strip > [panel] {
+    margin-bottom: 1px;
+    max-width: auto; /* not wider than max-intrinsic */
+    height: *;
+
+    padding: 3px 8px;
+
+    background-image: url(theme:tab-item-normal);
+    background-repeat: stretch;
+
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.tabs > .strip > [panel]:hover {
+    background-image: url(theme:tab-item-hover);
+    transition: blend;
+}
+
+/* active tab */
+.tabs > .strip > [panel]:current {
+    margin: -2px -2px -1px -2px;
+    padding: 4px 10px 5px 10px;
+    position: relative;
+
+    background-image: url(theme:tab-item-selected);
+}
+
+.tabs > .strip > [panel]:current:hover {
+    background-image: url(theme:tab-item-selected);
+    transition: none;
+}
+
+.tabs > .strip > [panel]:current:first-child,
+.tabs > .strip > [panel]:current:hover:first-child {
+    background-image: url(theme:tab-item-leftmost-selected);
+}
+
+/*
+.tabs:focus .strip [panel]:current {
+    background-image: url(theme:tab-item-focused);
+}
+*/
+
+/* outline active tab content if we've gotten focus by tab */
+.tabs:tab-focus > .strip > [panel]:current > * {
+    outline: 1px dotted invert;
+}
+
+.tabs > [name],
+.tabs > [id] {
+    display: none;
+}
+
+.tabs > [name]:expanded,
+.tabs > [id]:expanded {
+    display: block;
+    height: *;
+
+    padding: 4px;
+
+    background-image: url(theme:tab-panel);
+    background-repeat: stretch;
+}
+
+</style>
+<script>
+
+// set tabs onclick event
+document.on("click", ".strip > div", function(event, tab) {
+    //console.log(tab.innerHTML);
+
+    // get tab panel id
+    let id = tab.getAttribute("panel");
+
+    //console.log(id);
+
+    // get tab panel object
+    let panel = document.$("div#" + id);
+
+    //console.log(panel.innerHTML);
+
+    panel.setAttribute("expanded", true);
+
+});
+
+</script>
+
+<div class="tabs" #test>
+    <div class="strip" role="page-tab-list"> <!-- our tab strip, can be placed on any side of tab container. -->
+        <div panel="panel-id1" selected role="page-tab">tab1 caption</div>
+        <div panel="panel-id2" role="page-tab">tab2 caption</div>
+        <div panel="panel-id3" role="page-tab">tab3 caption</div>
+    </div>
+    <div id="panel-id1"> first panel content
+        <select name="country">
+            <option value=1 >Afghanistan</option>
+            <option value=2 >Albania</option>
+            <option value=3 >Algeria</option>
+            <option value=4 >American Samoa</option>
+        </select>
+    </div>
+    <div id="panel-id2">
+        second panel content
+        <button>Test1</button>
+    </div>
+    <div id="panel-id3">
+        third panel content
+    </div>
+</div>
+
+<p>tabs on bottom:</p>
+
+<div class="tabs" id="third">
+    <div name="panel-id1" selected> first panel content </div>
+    <div name="panel-id2"> second panel content </div>
+    <div name="panel-id3"> third panel content </div>
+
+    <div class="strip">
+        <div panel="panel-id1" selected>tab1 caption</div>
+        <div panel="panel-id2">tab2 caption</div>
+        <div panel="panel-id3">tab3 caption</div>
+    </div>
+</div>
