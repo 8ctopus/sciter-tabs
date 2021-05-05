@@ -1,6 +1,6 @@
 # sciter tabs demo app
 
-This is a [sciter](https://sciter.com/) js tabs demo app.
+This is a [sciter.js](https://sciter.com/) tabs demo app.
 
 ## get started
 
