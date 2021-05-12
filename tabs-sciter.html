@@ -1,0 +1,168 @@
+<style>
+
+.pagecontrol {
+    behavior: tabs;
+    overflow: hidden;
+
+    width: *;
+    height: *;
+
+    font: system;
+}
+
+/* header */
+.pagecontrol > .header {
+    flow: horizontal;
+    margin-bottom: -1px;
+    padding: 2px 2px 0 2px;
+}
+
+/* tabsheet header */
+.pagecontrol > .header > [panel] {
+    margin-bottom: 1px;
+    /* not wider than max-intrinsic */
+    max-width: auto;
+    height: *;
+
+    padding: 3px 8px;
+
+    background-image: url(theme:tab-item-normal);
+    background-repeat: stretch;
+
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.pagecontrol > .header > [panel]:hover {
+    background-image: url(theme:tab-item-hover);
+    transition: blend;
+}
+
+/* header selected tabsheet */
+.pagecontrol > .header > [panel]:current {
+    margin: -2px -2px -1px -2px;
+    padding: 4px 10px 5px 10px;
+    position: relative;
+
+    background-image: url(theme:tab-item-selected);
+
+    background: red;
+}
+
+.pagecontrol > .header > [panel]:current:hover {
+    background-image: url(theme:tab-item-selected);
+    transition: none;
+}
+
+.pagecontrol > .header > [panel]:current:first-child,
+.pagecontrol > .header > [panel]:current:hover:first-child {
+    background-image: url(theme:tab-item-leftmost-selected);
+}
+
+/*
+.pagecontrol:focus .header [panel]:current {
+    background-image: url(theme:tab-item-focused);
+}
+*/
+
+/* outline active tab content if we've gotten focus by tab */
+.pagecontrol:tab-focus > .header > [panel]:current > * {
+    outline: 1px dotted invert;
+}
+
+/* tabsheets */
+.pagecontrol > .tabsheet {
+    display: none;
+}
+
+.pagecontrol > .tabsheet:expanded {
+    display: block;
+
+    height: *;
+
+    padding: *;
+
+    background-image: url(theme:tab-panel);
+    background-repeat: stretch;
+}
+
+</style>
+<script>
+
+// set tabs onclick event
+document.on("click", "div.pagecontrol div.header > div", function(event, control) {
+    // get header
+    const header = control.parentElement;
+
+/*
+    // get selected header
+    let selected = header.querySelector("div::selected");
+
+    // unselect previous header
+    selected.state.selected = false;
+*/
+
+    // loop through header tabs
+    for (let child of header.children)
+        child.state.selected = false;
+
+    // select clicked header
+    control.state.selected = true;
+
+    // get pagecontrol
+    const pagecontrol = header.parentElement;
+
+    // get expanded tabsheet
+    let tabsheet = pagecontrol.querySelector("div.tabsheet:expanded");
+
+    // hide expanded tabsheet
+    tabsheet.state.expanded = false;
+
+    // get tabsheet to expand
+    const id = control.getAttribute("panel");
+
+    tabsheet = pagecontrol.$("div.tabsheet#" + id);
+
+    // expand tabsheet
+    tabsheet.state.expanded = true;
+});
+
+</script>
+
+<div .pagecontrol>
+    <div .header>
+        <div panel="tabsheet-id1" selected>first tab</div>
+        <div panel="tabsheet-id2">second tab</div>
+        <div panel="tabsheet-id3">third tab</div>
+    </div>
+    <div .tabsheet #tabsheet-id1 expanded>
+        <p> first tabsheet content </p>
+    </div>
+    <div .tabsheet #tabsheet-id2>
+        <p> second tabsheet content </p>
+    </div>
+    <div .tabsheet #tabsheet-id3>
+        <p> third tabsheet content </p>
+    </div>
+</div>
+
+<p> page control with header at the bottom </p>
+
+<div .pagecontrol>
+    <div .tabsheet #tabsheet-id1>
+        <p> first tabsheet content </p>
+    </div>
+    <div .tabsheet #tabsheet-id2 expanded>
+        <p> second tabsheet content </p>
+    </div>
+    <div .tabsheet #tabsheet-id3>
+        <p> third tabsheet content </p>
+    </div>
+
+    <div .header>
+        <div panel="tabsheet-id1">first tab</div>
+        <div panel="tabsheet-id2" selected>second tab</div>
+        <div panel="tabsheet-id3">third tab</div>
+    </div>
+</div>
