@@ -2,6 +2,11 @@
 
 This is a [sciter.js](https://sciter.com/) tabs demo app.
 
+It explores different ways to switch between tabsheets, namely:
+- pure css
+- classic javascript way
+- using sciter's [`Element.State`](https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.State.md) property `expanded`
+
 ## get started
 
 - git clone the repository
