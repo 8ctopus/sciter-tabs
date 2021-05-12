@@ -40,34 +40,32 @@
 }
 
 /* header selected tabsheet */
-.pagecontrol > .header > [panel]:current {
+.pagecontrol > .header > [panel]:selected {
     margin: -2px -2px -1px -2px;
     padding: 4px 10px 5px 10px;
     position: relative;
 
     background-image: url(theme:tab-item-selected);
-
-    background: red;
 }
 
-.pagecontrol > .header > [panel]:current:hover {
+.pagecontrol > .header > [panel]:selected:hover {
     background-image: url(theme:tab-item-selected);
     transition: none;
 }
 
-.pagecontrol > .header > [panel]:current:first-child,
-.pagecontrol > .header > [panel]:current:hover:first-child {
+.pagecontrol > .header > [panel]:selected:first-child,
+.pagecontrol > .header > [panel]:selected:hover:first-child {
     background-image: url(theme:tab-item-leftmost-selected);
 }
 
 /*
-.pagecontrol:focus .header [panel]:current {
+.pagecontrol:focus .header [panel]:selected {
     background-image: url(theme:tab-item-focused);
 }
 */
 
 /* outline active tab content if we've gotten focus by tab */
-.pagecontrol:tab-focus > .header > [panel]:current > * {
+.pagecontrol:tab-focus > .header > [panel]:selected > * {
     outline: 1px dotted invert;
 }
 
