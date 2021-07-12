@@ -11,7 +11,7 @@ It explores 3 different ways to switch between tabsheets, namely:
 
 - git clone the repository
 - run `install.bat` to download the latest sciter binaries and library
-- start `scapp.exe`
+- run `scapp.bat`
 - to refresh the app after changes to the html/css click `F5`
 
 ## debug app
