@@ -13,7 +13,7 @@ For a fully working component, check out [sciter pagecontrol](https://github.com
 
 - git clone the repository
 - run `install.bat` to download the latest sciter binaries and library
-- run `scapp.bat`
+- run `start.bat`
 - to refresh the app after changes to the html/css click `F5`
 
 ## debug app
