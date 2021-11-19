@@ -12,38 +12,40 @@
 import * as sys from "@sys";
 import {encode,decode} from "@sciter";
 
-// list current directory
-let list = sys.fs.$readdir(".");
+document.ready = function() {
+    // list directory
+    let list = sys.fs.$readdir("tabs");
 
-let files = [];
+    let files = [];
 
-// iterate directory contents
-for (let file of list) {
-    // ignore directories
-    if (file.type !== 1)
-        continue;
+    // iterate content
+    for (let file of list) {
+        // ignore directories
+        if (file.type !== 1)
+            continue;
 
-    // keep only grid*.html files
-    if (file.name.startsWith("tabs") && file.name.endsWith(".html"))
-        files.push(file.name);
+        // keep only grid*.html files
+        if (file.name.startsWith("tabs") && file.name.endsWith(".html"))
+            files.push(file.name);
+    }
+
+    // get element to append buttons
+    let parent = document.$("header");
+
+    // loop through files
+    files.forEach(function(file) {
+        // create button
+        let button = "<button>" + file + "</button>";
+
+        // add button to ui
+        parent.append(button);
+    });
 }
-
-// get element to append buttons
-let parent = document.$("header");
-
-// loop through files
-files.forEach(function(file) {
-    // create button
-    let button = "<button>" + file + "</button>";
-
-    // add button to ui
-    parent.append(button);
-});
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
     // get file name from button
-    let file = button.innerHTML;
+    let file = "tabs/" + button.innerHTML;
 
     // get element to insert code in
     let include = document.$("iframe");

@@ -9,12 +9,12 @@ It explores 3 different ways to create tabs, namely:
 
 For a fully working component, check out [sciter pagecontrol](https://github.com/8ctopus/sciter-pagecontrol).
 
-## get started
+## demo
 
 - git clone the repository
-- run `install.bat` to download the latest sciter binaries and library
-- run `start.bat`
-- to refresh the app after changes to the html/css click `F5`
+- on Linux/Mac `chmod +x install.sh start.sh`
+- run `install.bat` (Win) or `./install.sh` (Linux/Mac) to download the latest sciter binaries and the sciter package manager
+- run `start.bat` (Win) or `./start.sh` (Linux/Mac)
 
 ## debug app
 
