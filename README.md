@@ -3,11 +3,12 @@
 This is a [sciter.js](https://sciter.com/) tabs demo app.
 
 It explores 3 different ways to create tabs, namely:
+
 - pure css
 - classic javascript way
 - using sciter's [`Element.State`](https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.State.md) property `expanded`
 
-For a fully working component, check out [sciter pagecontrol](https://github.com/8ctopus/sciter-pagecontrol).
+For a more advanced way in the form of a component, check out [sciter pagecontrol](https://github.com/8ctopus/sciter-pagecontrol).
 
 ## demo
 
