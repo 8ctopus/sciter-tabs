@@ -5,13 +5,76 @@
 >
 <head>
 <title>sciter tabs demo</title>
+<style>
+
+body {
+    margin: 0;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+header {
+    width: *;
+    height: max-content;
+
+    padding: 8dip;
+
+    flow: horizontal;
+
+    background: rgb(230,230,230);
+}
+
+header > button {
+    margin: 0 *;
+}
+
+iframe {
+    size: *;
+}
+
+</style>
 <script type="module">
 
 // import functions from sciter libraries
 import * as sys from "@sys";
 import {encode,decode} from "@sciter";
 
-document.on("ready", function() {
+import Logger from "node_modules/sciter-logger/src/logger.js";
+import * as Utils from "node_modules/sciter-utils/src/utils.js";
+
+// initialize logger
+Logger.init();
+
+// attach logger to console
+Logger.attach();
+
+// capture unhandled exceptions
+Logger.capture();
+
+document.on("ready", function(event, element) {
+    // ignore iframe ready event
+    if (element.parentElement)
+        return;
+
+    // redirect logger output to plaintext
+    Logger.plaintext(document.$("plaintext#logger"));
+
+    // log sciter version
+    console.debug(Utils.sciterInfo());
+
+    // add support for F5 reload
+    Utils.addReloadWindow();
+
+    // close window on escape key press
+    Utils.closeWindowOnEscape(Window.this);
+
+    // center window on screen
+    Utils.centerWindow(Window.this, "screen");
+
+    // bring window to front and set input focus
+    Window.this.activate(true);
+
     // list directory
     let list = sys.fs.$readdir("tabs");
 
@@ -54,35 +117,6 @@ document.on("click", "header > button", function(event, button) {
 });
 
 </script>
-<style>
-
-body {
-    margin: 0;
-
-    vertical-align: middle;
-    text-align: center;
-}
-
-header {
-    width: *;
-    height: max-content;
-
-    padding: 8dip;
-
-    flow: horizontal;
-
-    background: rgb(230,230,230);
-}
-
-header > button {
-    margin: 0 *;
-}
-
-iframe {
-    size: *;
-}
-
-</style>
 </head>
 <header>
     <!-- buttons -->
