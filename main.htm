@@ -43,7 +43,6 @@ plaintext {
 
 // import functions from sciter libraries
 import * as sys from "@sys";
-import {encode,decode} from "@sciter";
 
 import Logger from "node_modules/sciter-logger/src/logger.js";
 import * as Utils from "node_modules/sciter-utils/src/utils.js";
@@ -81,12 +80,12 @@ document.on("ready", function(event, element) {
     Window.this.activate(true);
 
     // list directory
-    let list = sys.fs.$readdir("tabs");
+    const list = sys.fs.$readdir("tabs");
 
-    let files = [];
+    const files = [];
 
     // iterate content
-    for (let file of list) {
+    for (const file of list) {
         // ignore directories
         if (file.type !== 1)
             continue;
@@ -97,25 +96,25 @@ document.on("ready", function(event, element) {
     }
 
     // get element to append buttons
-    let parent = document.$("header");
+    const parent = document.$("header");
 
     // loop through files
-    files.forEach(function(file) {
+    for (const file of files) {
         // create button
-        let button = "<button>" + file + "</button>";
+        const button = "<button>" + file + "</button>";
 
         // add button to ui
         parent.append(button);
-    });
+    }
 });
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
     // get file name from button
-    let file = "tabs/" + button.innerHTML;
+    const file = "tabs/" + button.innerHTML;
 
     // get element to insert code in
-    let include = document.$("iframe");
+    const include = document.$("iframe");
 
     // insert code
     include.setAttribute("src", file);
