@@ -12,7 +12,7 @@
 import * as sys from "@sys";
 import {encode,decode} from "@sciter";
 
-document.ready = function() {
+document.on("ready", function() {
     // list directory
     let list = sys.fs.$readdir("tabs");
 
@@ -40,7 +40,7 @@ document.ready = function() {
         // add button to ui
         parent.append(button);
     });
-}
+});
 
 // set all buttons onclick event
 document.on("click", "header > button", function(event, button) {
