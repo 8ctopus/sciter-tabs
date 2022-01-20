@@ -20,6 +20,8 @@
 /* single tabsheet caption */
 .pagecontrol > .header > [panel] {
     margin-bottom: 1px;
+
+    border: 1dip solid gray;
     /* not wider than max-intrinsic */
     max-width: auto;
     height: *;
@@ -76,12 +78,12 @@
 .pagecontrol > .tabsheet:expanded {
     display: block;
 
+    border: 1dip solid gray;
     height: *;
 
     padding: *;
 
-    background-image: url(theme:tab-panel);
-    background-repeat: stretch;
+    background: rgba(230,230,230,.9);
 }
 
 </style>
@@ -92,7 +94,7 @@ document.on("click", "div.pagecontrol div.header > div", function(event, control
     // get header
     const header = control.parentElement;
 
-/*
+    /*
     // get selected header
     let selected = header.querySelector("div::selected");
 
@@ -101,7 +103,7 @@ document.on("click", "div.pagecontrol div.header > div", function(event, control
 */
 
     // loop through header tabs
-    for (let child of header.children)
+    for (const child of header.children)
         child.state.selected = false;
 
     // select clicked header
@@ -134,13 +136,13 @@ document.on("click", "div.pagecontrol div.header > div", function(event, control
         <div panel="tabsheet-id3">third tab</div>
     </div>
     <div .tabsheet #tabsheet-id1 expanded>
-        <p> first tabsheet content </p>
+        <h2> first tabsheet content </h2>
     </div>
     <div .tabsheet #tabsheet-id2>
-        <p> second tabsheet content </p>
+        <h2> second tabsheet content </h2>
     </div>
     <div .tabsheet #tabsheet-id3>
-        <p> third tabsheet content </p>
+        <h2> third tabsheet content </h2>
     </div>
 </div>
 
@@ -148,13 +150,13 @@ document.on("click", "div.pagecontrol div.header > div", function(event, control
 
 <div .pagecontrol>
     <div .tabsheet #tabsheet-id1>
-        <p> first tabsheet content </p>
+        <h2> first tabsheet content </h2>
     </div>
     <div .tabsheet #tabsheet-id2 expanded>
-        <p> second tabsheet content </p>
+        <h2> second tabsheet content </h2>
     </div>
     <div .tabsheet #tabsheet-id3>
-        <p> third tabsheet content </p>
+        <h2> third tabsheet content </h2>
     </div>
 
     <div .header>

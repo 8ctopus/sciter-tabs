@@ -112,7 +112,7 @@ document.on("click", ".tabs li a", function(event, tab) {
     let tabs = document.$$(".tabs li a");
 
     // hide all tabs
-    tabs.map(function (tab) {
+    tabs.map(function(tab) {
         tab.classList.remove("active");
     });
 
@@ -120,13 +120,13 @@ document.on("click", ".tabs li a", function(event, tab) {
     tab.classList.add("active");
 
     // get tab id
-    let id = tab.id;
+    const id = tab.id;
 
     // get all tabs
     tabs = document.$$("div#content > div");
 
     // hide all tabs
-    tabs.map(function (tab) {
+    tabs.map(function(tab) {
         tab.classList.remove("active");
     });
 
