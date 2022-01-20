@@ -1,17 +1,16 @@
 <html
     window-resizable="true"
     window-width="1600dip"
-    window-height="800dip"
+    window-height="900dip"
 >
 <head>
 <title>sciter tabs demo</title>
 <style>
 
-body {
-    margin: 0;
+@import url(node_modules/sciter-logger/src/logger.css);
 
-    vertical-align: middle;
-    text-align: center;
+body{
+    margin: 0;
 }
 
 header {
@@ -31,6 +30,12 @@ header > button {
 
 iframe {
     size: *;
+    vertical-align: middle;
+    text-align: center;
+}
+
+plaintext {
+    height: 20%;
 }
 
 </style>
@@ -125,5 +130,6 @@ document.on("click", "header > button", function(event, button) {
     <iframe src="">
         click one of the buttons
     </iframe>
+    <plaintext #logger readonly />
 </body>
 </html>
