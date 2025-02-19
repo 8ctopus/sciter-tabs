@@ -1,6 +1,6 @@
 {
   "name": "sciter-tabs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a [sciter.js](https://sciter.com/) tabs demo app.",
   "scripts": {
     "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs cleanup",
